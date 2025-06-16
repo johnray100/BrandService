@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+    <!-- 📦 Maven Model Version -->
+    <modelVersion>4.0.0</modelVersion>
+
+    <!-- 👨‍👧 Parent POM (Spring Boot BOM for dependency management) -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>3.4.5</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <!-- 🆔 Project Metadata -->
+    <groupId>com.springframework.graphql</groupId>
+    <artifactId>BrandService</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>BrandService</name>
+    <description>Demo project for Spring Boot</description>
+    <url>https://example.com/BrandService</url>
+
+    <!-- 📜 License -->
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+        </license>
+    </licenses>
+
+    <!-- ⚙️ Java Version Property -->
+    <properties>
+        <java.version>17</java.version>
+    </properties>
+
+    <!-- 📚 Dependencies -->
+    <dependencies>
+        <!-- 🔧 Maven Plugin API (for developing Maven plugins) -->
+        <dependency>
+            <groupId>org.apache.maven</groupId>
+            <artifactId>maven-plugin-api</artifactId>
+            <version>3.9.9</version>
+        </dependency>
+
+        <!-- 🌱 Spring Boot Core Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+
+        <!-- 🌐 Spring Web (REST API support) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>
+
+        <!-- ⚡ Spring WebFlux (Reactive support) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-webflux</artifactId>
+        </dependency>
+
+        <!-- 🗃️ Spring Data JPA (ORM and DB interaction) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <!-- 🧬 Spring GraphQL Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-graphql</artifactId>
+        </dependency>
+
+        <!-- 🧪 Core Spring GraphQL Library -->
+        <dependency>
+            <groupId>org.springframework.graphql</groupId>
+            <artifactId>spring-graphql</artifactId>
+        </dependency>
+
+        <!-- 🛠️ Developer Tools (Hot reload, etc.) -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- ✍️ Lombok (Boilerplate code remover) -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <optional>true</optional>
+        </dependency>
+
+        <!-- 🗄️ H2 In-Memory Database (for development/testing) -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+        <!-- 🌌 Apollo Federation (GraphQL schema stitching) -->
+        <dependency>
+            <groupId>com.apollographql.federation</groupId>
+            <artifactId>federation-graphql-java-support</artifactId>
+            <version>5.0.0</version>
+        </dependency>
+
+        <!-- 🚀 Dapr Integration for microservices -->
+        <dependency>
+            <groupId>io.dapr.spring</groupId>
+            <artifactId>dapr-spring-boot-starter</artifactId>
+            <version>0.13.1</version>
+        </dependency>
+
+        <!-- 📦 Protobuf support (Serialization format) -->
+        <dependency>
+            <groupId>com.google.protobuf</groupId>
+            <artifactId>protobuf-java</artifactId>
+            <version>4.28.0</version>
+        </dependency>
+
+        <!-- 🧪 Spring Boot Test Starter -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 🔁 Reactor Test utilities (WebFlux testing) -->
+        <dependency>
+            <groupId>io.projectreactor</groupId>
+            <artifactId>reactor-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- 🧪 Spring GraphQL Testing -->
+        <dependency>
+            <groupId>org.springframework.graphql</groupId>
+            <artifactId>spring-graphql-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- 🛠️ Build Configuration -->
+    <build>
+        <plugins>
+            <!-- ⚙️ Java Compiler Plugin (with Lombok annotation processor) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <!-- 🚀 Spring Boot Maven Plugin (for packaging and running app) -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <excludes>
+                        <!-- ❌ Exclude Lombok from the final JAR -->
+                        <exclude>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <!-- 📦 Output Artifact Name -->
+        <finalName>${project.artifactId}</finalName>
+    </build>
+
+</project>

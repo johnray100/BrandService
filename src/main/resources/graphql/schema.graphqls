@@ -1,0 +1,22 @@
+type Query {
+    findBrand(id: ID!): Brand!
+    brands: [Brand!]!
+}
+
+type Mutation {
+    addBrand(name: String!, description: String!, urlWebsite: String!): Brand!
+    updateBrand(id: ID!, name: String, description: String, urlWebsite: String): Brand!
+    deleteBrand(id: ID!): String!
+}
+
+type Brand @key(fields: "id") {
+    id: ID!
+    name: String!
+    description: String!
+    urlWebsite: String!
+}
+
+#type Customer @key(fields: "id") @extends {
+#    id: ID! @external
+#    brandList: [Brand!]!
+#}

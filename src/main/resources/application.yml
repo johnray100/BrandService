@@ -1,0 +1,24 @@
+spring:
+  application:
+    name: customer  # 🏷️ Application name identifier
+
+  datasource:
+    url: jdbc:h2:mem:graphql           # 💾 Using in-memory H2 database named 'graphql'
+    driver-class-name: org.h2.Driver   # 🛠️ H2 JDBC driver class
+    username: sa                      # 👤 Default username for H2 DB
+    password:                        # 🔐 No password set for simplicity in dev environment
+
+  jpa:
+    defer-datasource-initialization: true  # ⏳ Delay JPA initialization until after DB schema is ready
+    database-platform: org.hibernate.dialect.H2Dialect  # 🗄️ Hibernate dialect for H2 DB
+    show-sql: true                          # 📝 Show SQL statements in logs for debugging
+    properties:
+      hibernate:
+        "[format_sql]": true                    # 🧹 Format SQL queries nicely in logs
+
+  h2:
+    console:
+      enabled: true                        # 🖥️ Enable H2 web console at /h2-console for debugging
+
+server:
+  port: ${PORT:8083}                      # 🚀 Server port, defaults to 8083 or use environment PORT variable
